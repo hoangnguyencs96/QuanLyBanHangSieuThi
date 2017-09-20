@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2891A693-3D71-4C4F-812D-E74FC1D94E43}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShopManagementV6</RootNamespace>
+    <AssemblyName>ShopManagementV6</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountForm.Designer.cs">
+      <DependentUpon>AccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BillsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillsForm.Designer.cs">
+      <DependentUpon>BillsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CartForm.Designer.cs">
+      <DependentUpon>CartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePasswordForm.Designer.cs">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateAccForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateAccForm.Designer.cs">
+      <DependentUpon>CreateAccForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateEmployees.Designer.cs">
+      <DependentUpon>CreateEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditAccForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditAccForm.Designer.cs">
+      <DependentUpon>EditAccForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditEmployees.Designer.cs">
+      <DependentUpon>EditEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditProducts.Designer.cs">
+      <DependentUpon>EditProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeesForm.Designer.cs">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductsForm.Designer.cs">
+      <DependentUpon>ProductsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanLySieuThiDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLySieuThiDataSet.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AccountForm.resx">
+      <DependentUpon>AccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BillsForm.resx">
+      <DependentUpon>BillsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CartForm.resx">
+      <DependentUpon>CartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePasswordForm.resx">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateAccForm.resx">
+      <DependentUpon>CreateAccForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateEmployees.resx">
+      <DependentUpon>CreateEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAccForm.resx">
+      <DependentUpon>EditAccForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditEmployees.resx">
+      <DependentUpon>EditEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditProducts.resx">
+      <DependentUpon>EditProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeesForm.resx">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductsForm.resx">
+      <DependentUpon>ProductsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="QuanLySieuThiDataSet.xsc">
+      <DependentUpon>QuanLySieuThiDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLySieuThiDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuanLySieuThiDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLySieuThiDataSet.xss">
+      <DependentUpon>QuanLySieuThiDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5b5b68ddf9de812ffc941238e66049ac.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Web\ShopManagement5thEd\ConnectionSQLServer\ConnectionSQLServer.csproj">
+      <Project>{d42a80dc-b6c2-4823-a966-7d5b9602b4ee}</Project>
+      <Name>ConnectionSQLServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
