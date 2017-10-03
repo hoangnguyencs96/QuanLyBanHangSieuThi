@@ -92,22 +92,34 @@ namespace ShopManagementV6
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var pf = new ProductsForm(IDSaleBox.Text, NameSaleBox.Text);
+            pf.Closed += (s, args) => this.Show();
+            pf.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var pf = new BillsForm(IDSaleBox.Text, NameSaleBox.Text);
+            pf.Closed += (s, args) => this.Show();
+            pf.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var pf = new AccountForm();
+            pf.Closed += (s, args) => this.Show();
+            pf.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var pf = new EmployeesForm();
+            pf.Closed += (s, args) => this.Show();
+            pf.Show();
         }
     }
 }

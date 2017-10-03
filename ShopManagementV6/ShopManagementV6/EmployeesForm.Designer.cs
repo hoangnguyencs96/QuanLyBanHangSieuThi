@@ -89,6 +89,7 @@
             this.InsertBut.TabIndex = 5;
             this.InsertBut.Text = "Insert";
             this.InsertBut.UseVisualStyleBackColor = true;
+            this.InsertBut.Click += new System.EventHandler(this.InsertBut_Click);
             // 
             // EditBut
             // 
@@ -98,6 +99,7 @@
             this.EditBut.TabIndex = 6;
             this.EditBut.Text = "Edit";
             this.EditBut.UseVisualStyleBackColor = true;
+            this.EditBut.Click += new System.EventHandler(this.EditBut_Click);
             // 
             // DeleteBut
             // 
@@ -107,6 +109,7 @@
             this.DeleteBut.TabIndex = 7;
             this.DeleteBut.Text = "Delete";
             this.DeleteBut.UseVisualStyleBackColor = true;
+            this.DeleteBut.Click += new System.EventHandler(this.DeleteBut_Click);
             // 
             // ShowBut
             // 
@@ -116,6 +119,7 @@
             this.ShowBut.TabIndex = 8;
             this.ShowBut.Text = "Show All";
             this.ShowBut.UseVisualStyleBackColor = true;
+            this.ShowBut.Click += new System.EventHandler(this.ShowBut_Click);
             // 
             // Search
             // 
@@ -125,6 +129,7 @@
             this.Search.TabIndex = 9;
             this.Search.Text = "Search";
             this.Search.UseVisualStyleBackColor = true;
+            this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
             // label3
             // 

@@ -143,6 +143,7 @@
             this.Editbut.TabIndex = 11;
             this.Editbut.Text = "Submit Edit";
             this.Editbut.UseVisualStyleBackColor = true;
+            this.Editbut.Click += new System.EventHandler(this.Editbut_Click);
             // 
             // button2
             // 
@@ -152,6 +153,7 @@
             this.button2.TabIndex = 12;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // EditEmployees
             // 

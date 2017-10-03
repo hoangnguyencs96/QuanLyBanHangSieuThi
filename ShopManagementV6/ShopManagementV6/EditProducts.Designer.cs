@@ -116,6 +116,7 @@
             this.SubmitBut.TabIndex = 16;
             this.SubmitBut.Text = "Submit Edit";
             this.SubmitBut.UseVisualStyleBackColor = true;
+            this.SubmitBut.Click += new System.EventHandler(this.SubmitBut_Click);
             // 
             // label5
             // 
@@ -142,6 +143,7 @@
             this.CancelBut.TabIndex = 19;
             this.CancelBut.Text = "Cancel";
             this.CancelBut.UseVisualStyleBackColor = true;
+            this.CancelBut.Click += new System.EventHandler(this.button1_Click);
             // 
             // EditProducts
             // 

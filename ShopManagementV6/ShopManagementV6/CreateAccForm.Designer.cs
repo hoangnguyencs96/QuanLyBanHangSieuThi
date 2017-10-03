@@ -101,6 +101,7 @@
             this.CreateBut.TabIndex = 6;
             this.CreateBut.Text = "Create";
             this.CreateBut.UseVisualStyleBackColor = true;
+            this.CreateBut.Click += new System.EventHandler(this.CreateBut_Click);
             // 
             // CancelBut
             // 

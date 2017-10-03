@@ -134,6 +134,7 @@
             this.EditBut.TabIndex = 10;
             this.EditBut.Text = "Edit";
             this.EditBut.UseVisualStyleBackColor = true;
+            this.EditBut.Click += new System.EventHandler(this.EditBut_Click);
             // 
             // CancelBut
             // 
@@ -143,6 +144,7 @@
             this.CancelBut.TabIndex = 11;
             this.CancelBut.Text = "Cancel";
             this.CancelBut.UseVisualStyleBackColor = true;
+            this.CancelBut.Click += new System.EventHandler(this.CancelBut_Click);
             // 
             // label6
             // 

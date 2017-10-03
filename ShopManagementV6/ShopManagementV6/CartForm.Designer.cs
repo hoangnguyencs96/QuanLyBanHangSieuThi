@@ -118,6 +118,7 @@
             this.CompleteBut.TabIndex = 11;
             this.CompleteBut.Text = "Complete Bill";
             this.CompleteBut.UseVisualStyleBackColor = true;
+            this.CompleteBut.Click += new System.EventHandler(this.CompleteBut_Click);
             // 
             // ChangeBox
             // 
@@ -168,6 +169,7 @@
             this.CountBut.TabIndex = 5;
             this.CountBut.Text = "Check Out";
             this.CountBut.UseVisualStyleBackColor = true;
+            this.CountBut.Click += new System.EventHandler(this.CountBut_Click);
             // 
             // groupBox2
             // 
@@ -203,6 +205,7 @@
             this.DeleteBut.TabIndex = 10;
             this.DeleteBut.Text = "Delete";
             this.DeleteBut.UseVisualStyleBackColor = true;
+            this.DeleteBut.Click += new System.EventHandler(this.DeleteBut_Click);
             // 
             // button2
             // 
@@ -212,6 +215,7 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // AddCartBut
             // 
@@ -221,6 +225,7 @@
             this.AddCartBut.TabIndex = 8;
             this.AddCartBut.Text = "Add";
             this.AddCartBut.UseVisualStyleBackColor = true;
+            this.AddCartBut.Click += new System.EventHandler(this.AddCartBut_Click);
             // 
             // QuantityBox
             // 

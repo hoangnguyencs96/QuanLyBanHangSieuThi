@@ -90,29 +90,27 @@ namespace ShopManagementV6
 
         private void AddCartBut_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void DeleteBut_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void CountBut_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void CompleteBut_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            IDTextBox.Text = "";
-            QuantityBox.Text = "";
-            CartGridView.DataSource = null;
+            
         }
     }
 }

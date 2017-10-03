@@ -21,6 +21,6 @@ F:\Web\ShopManagementV6\ShopManagementV6\obj\Debug\ShopManagementV6.ChangePasswo
 F:\Web\ShopManagementV6\ShopManagementV6\obj\Debug\ShopManagementV6.EmployeesForm.resources
 F:\Web\ShopManagementV6\ShopManagementV6\obj\Debug\ShopManagementV6.CreateEmployees.resources
 F:\Web\ShopManagementV6\ShopManagementV6\obj\Debug\ShopManagementV6.EditEmployees.resources
-F:\Test\ShopManagementV6\ShopManagementV6\bin\Debug\ShopManagementV6.exe.config
-F:\Test\ShopManagementV6\ShopManagementV6\obj\Debug\ShopManagementV6.exe
-F:\Test\ShopManagementV6\ShopManagementV6\obj\Debug\ShopManagementV6.pdb
+F:\Test Service\ShopManagementV6\ShopManagementV6\bin\Debug\ShopManagementV6.exe.config
+F:\Test Service\ShopManagementV6\ShopManagementV6\obj\Debug\ShopManagementV6.exe
+F:\Test Service\ShopManagementV6\ShopManagementV6\obj\Debug\ShopManagementV6.pdb

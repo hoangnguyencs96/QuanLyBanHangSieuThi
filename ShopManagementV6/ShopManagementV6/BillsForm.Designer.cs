@@ -94,6 +94,7 @@
             this.CountBut.TabIndex = 3;
             this.CountBut.Text = "Count";
             this.CountBut.UseVisualStyleBackColor = true;
+            this.CountBut.Click += new System.EventHandler(this.CountBut_Click);
             // 
             // IDSaleBox
             // 
@@ -145,6 +146,7 @@
             this.ViewBillsBut.TabIndex = 9;
             this.ViewBillsBut.Text = "View All Bills";
             this.ViewBillsBut.UseVisualStyleBackColor = true;
+            this.ViewBillsBut.Click += new System.EventHandler(this.ViewBillsBut_Click);
             // 
             // groupBox1
             // 
@@ -188,6 +190,7 @@
             this.AdvanceBut.TabIndex = 20;
             this.AdvanceBut.Text = "Count";
             this.AdvanceBut.UseVisualStyleBackColor = true;
+            this.AdvanceBut.Click += new System.EventHandler(this.AdvanceBut_Click);
             // 
             // label6
             // 
@@ -238,6 +241,7 @@
             this.ViewButton.TabIndex = 14;
             this.ViewButton.Text = "View";
             this.ViewButton.UseVisualStyleBackColor = true;
+            this.ViewButton.Click += new System.EventHandler(this.ViewButton_Click);
             // 
             // SearchBut
             // 
@@ -247,6 +251,7 @@
             this.SearchBut.TabIndex = 13;
             this.SearchBut.Text = "Search";
             this.SearchBut.UseVisualStyleBackColor = true;
+            this.SearchBut.Click += new System.EventHandler(this.SearchBut_Click);
             // 
             // label3
             // 

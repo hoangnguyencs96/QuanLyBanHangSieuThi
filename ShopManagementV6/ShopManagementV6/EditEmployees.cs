@@ -31,7 +31,27 @@ namespace ShopManagementV6
 
         private void Editbut_Click(object sender, EventArgs e)
         {
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            try
+            {
+                string sql_cmd = "Update SalesPerson set Name=@Name,Description=@Descriptions,DateOfBirth=@DateOfBirth,Salary=@Salary where ID=@ID";
+                SqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = sql_cmd;
 
+                cmd.Parameters.Add("@ID", SqlDbType.BigInt).Value = Int32.Parse(IDBox.Text);
+                cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = NameBox.Text;
+                cmd.Parameters.Add("@Descriptions", SqlDbType.NVarChar).Value = DescriptionBox.Text;
+                cmd.Parameters.Add("@DateOfBirth", SqlDbType.DateTime).Value = DateOfBirthBox.Text ;
+                cmd.Parameters.Add("@Salary", SqlDbType.Decimal).Value = Double.Parse(SalaryBox.Text);
+
+                int rowCount = cmd.ExecuteNonQuery();
+                MessageBox.Show("Update Successful!", "Information");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
