@@ -90,12 +90,121 @@ namespace ShopManagementV6
 
         private void AddCartBut_Click(object sender, EventArgs e)
         {
-            
+            DataTable dt = (DataTable)CartGridView.DataSource;
+            if (dt == null)
+            {
+                dt = new DataTable();
+
+                dt.Columns.Add("ID", typeof(int));
+                dt.Columns.Add("Product Name", typeof(string));
+                dt.Columns.Add("Product Description", typeof(string));
+                dt.Columns.Add("Quantity", typeof(int));
+                dt.Columns.Add("Left in Storage", typeof(int));
+                dt.Columns.Add("Price", typeof(double));
+                dt.Columns.Add("Total Price", typeof(double));
+
+                SqlConnection cnn = DBUtils.GetDBConnection();
+                cnn.Open();
+                try
+                {
+                    DataTable dt2 = new DataTable();
+                    string sql = "select * from Product where ID=" + IDTextBox.Text;
+
+                    SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
+                    sda.Fill(dt2);
+                    DataRow row = dt.NewRow();
+                    row["ID"] = Int32.Parse(IDTextBox.Text);
+                    row["Product Name"] = dt2.Rows[0]["ProductName"];
+                    row["Product Description"] = dt2.Rows[0]["ProductDescription"];
+                    row["Quantity"] = Int32.Parse(QuantityBox.Text);
+                    row["Left in Storage"] = dt2.Rows[0]["Quantity"];
+                    row["Price"] = dt2.Rows[0]["Price"];
+                    int a = (int)row["Quantity"];
+                    double b = (double)row["Price"];
+                    row["Total Price"] = (double)(a * b);
+
+                    dt.Rows.Add(row);
+                    CartGridView.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+            else
+            {
+                SqlConnection cnn = DBUtils.GetDBConnection();
+                cnn.Open();
+                try
+                {
+                    DataTable dt2 = new DataTable();
+                    string sql = "select * from Product where ID=" + IDTextBox.Text;
+
+                    SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
+                    sda.Fill(dt2);
+
+                    int pos = -1;
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        int c = Int32.Parse(dt.Rows[i]["ID"].ToString());
+                        if (Int32.Parse(IDTextBox.Text) == c)
+                        {
+                            pos = i;
+                            break;
+                        }
+                    }
+                    if (pos == -1)
+                    {
+                        DataRow row = dt.NewRow();
+                        row["ID"] = Int32.Parse(IDTextBox.Text);
+                        row["Product Name"] = dt2.Rows[0]["ProductName"];
+                        row["Product Description"] = dt2.Rows[0]["ProductDescription"];
+                        row["Quantity"] = Int32.Parse(QuantityBox.Text);
+                        row["Left in Storage"] = dt2.Rows[0]["Quantity"];
+                        row["Price"] = dt2.Rows[0]["Price"];
+                        int a = (int)row["Quantity"];
+                        double b = (double)row["Price"];
+                        row["Total Price"] = (double)(a * b);
+                        dt.Rows.Add(row);
+                    }
+                    else
+                    {
+                        int a = Int32.Parse(dt.Rows[pos]["Quantity"].ToString());
+                        a += Int32.Parse(QuantityBox.Text);
+                        dt.Rows[pos]["Quantity"] = a.ToString();
+                    }
+                    CartGridView.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+
         }
 
         private void DeleteBut_Click(object sender, EventArgs e)
         {
-            
+            DialogResult dialogResult = MessageBox.Show("Delete this choice from cart?", "Are your sure?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            try
+            {
+                int i = CartGridView.CurrentCell.RowIndex;
+                DataTable dt = (DataTable)CartGridView.DataSource;
+                dt.Rows.RemoveAt(i);
+                CartGridView.DataSource = dt;
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error rised when trying to delete: " + x.Message);
+            }
+
         }
 
         private void CountBut_Click(object sender, EventArgs e)
