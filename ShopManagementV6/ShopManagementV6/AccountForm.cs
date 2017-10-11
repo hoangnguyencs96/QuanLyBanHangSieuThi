@@ -169,7 +169,27 @@ namespace ShopManagementV6
             sda2.Fill(dt2);
             AccountGridView.DataSource = dt2;
         }
+        private void SearchBut_Click(object sender, EventArgs e)
+        {
+            string sql = "select UserName,Name,SalesPersonID,Descriptions,DateOfBirth from Account where UserName like '%" + SearchBox.Text + "%' or Name like '%" + SearchBox.Text + "%'";
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            DataTable dt = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
+            sda.Fill(dt);
+            AccountGridView.DataSource = dt;
+        }
+        private void ChangePWBut_Click(object sender, EventArgs e)
+        {
+            int i = AccountGridView.CurrentCell.RowIndex;
 
-        
+            string username = AccountGridView.Rows[i].Cells[0].Value.ToString();
+
+            var mf = new ChangePasswordForm(username);
+            mf.Closed += (s, args) => this.LoadData();
+            mf.Show();
+        }
+
+
     }
 }
