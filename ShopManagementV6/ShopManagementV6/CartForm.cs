@@ -185,7 +185,26 @@ namespace ShopManagementV6
 
         private void DeleteBut_Click(object sender, EventArgs e)
         {
-            
+            DialogResult dialogResult = MessageBox.Show("Delete this choice from cart?", "Are your sure?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            try
+            {
+                int i = CartGridView.CurrentCell.RowIndex;
+                DataTable dt = (DataTable)CartGridView.DataSource;
+                dt.Rows.RemoveAt(i);
+                CartGridView.DataSource = dt;
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error rised when trying to delete: " + x.Message);
+            }
+
         }
 
         private void CountBut_Click(object sender, EventArgs e)
