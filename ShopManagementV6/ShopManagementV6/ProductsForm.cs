@@ -96,6 +96,24 @@ namespace ShopManagementV6
                 MessageBox.Show("Error rised when trying to delete: " + x.Message);
             }
         }
+        private void EditBut_Click(object sender, EventArgs e)
+        {
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            SqlCommand cmd = cnn.CreateCommand();
+
+            int i = ProductsGridView.CurrentCell.RowIndex;
+
+            string IDSpecify = ProductsGridView.Rows[i].Cells[0].Value.ToString();
+            string productname = ProductsGridView.Rows[i].Cells[1].Value.ToString();
+            string productdes = ProductsGridView.Rows[i].Cells[2].Value.ToString();
+            string quantity = ProductsGridView.Rows[i].Cells[3].Value.ToString();
+            string price = ProductsGridView.Rows[i].Cells[4].Value.ToString();
+
+            EditProducts ep = new EditProducts(IDSpecify,productname,productdes,quantity,price);
+            ep.ShowDialog();
+        }
+
 
     }
 }

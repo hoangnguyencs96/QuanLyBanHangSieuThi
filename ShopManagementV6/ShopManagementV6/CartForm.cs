@@ -209,7 +209,24 @@ namespace ShopManagementV6
 
         private void CountBut_Click(object sender, EventArgs e)
         {
-            
+            DataTable dt = (DataTable)CartGridView.DataSource;
+            if (dt == null)
+            {
+                CountBox.Text = "Nothing to check out";
+                return;
+            }
+            else
+            {
+                int rowCount = dt.Rows.Count;
+                double TotalPrice = 0;
+                for (int i = 0; i < rowCount; i++)
+                {
+                    TotalPrice += (double)dt.Rows[i]["Total Price"];
+                }
+
+                CountBox.Text = TotalPrice.ToString();
+            }
+
         }
 
         private void CompleteBut_Click(object sender, EventArgs e)
