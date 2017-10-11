@@ -231,7 +231,62 @@ namespace ShopManagementV6
 
         private void CompleteBut_Click(object sender, EventArgs e)
         {
-            
+            DataTable dt = (DataTable)CartGridView.DataSource;
+            if (dt == null)
+            {
+                MessageBox.Show("Nothing on cart!", "Check out error!");
+                return;
+            }
+            string BillInfo = DateTime.Now.ToString();
+            string TotalPrice = CountBox.Text;
+            string CustomerName = CustomerNameBox.Text;
+            string SalesPersonID = IDSaleBox.Text;
+
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            try
+            {
+                string sql = "insert into Bill(BillInfo,TotalPrice,CustomerName,SalesPersonID) values('" + BillInfo + "'," + TotalPrice + ",'" + CustomerName + "'," + SalesPersonID + ")";
+                SqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+
+                string productlist = "";
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    int left = Int32.Parse(dt.Rows[i]["Left in Storage"].ToString());
+                    string id = dt.Rows[i]["ID"].ToString();
+                    string productname = dt.Rows[i]["Product Name"].ToString();
+                    string quantity = dt.Rows[i]["Quantity"].ToString();
+                    int iquantity = Int32.Parse(quantity);
+                    left = left - iquantity;
+                    string updatedquantity = left.ToString();
+                    string totalprice = dt.Rows[i]["Total Price"].ToString();
+                    string sql_add = "insert into ProductsBill(ProductID,ProductName,Quantity,BillInfo,TotalPrice) values(" + id + ",'" + productname + "'," + quantity + ",'" + BillInfo + "'," + totalprice + ")";
+                    SqlCommand cmd_add = cnn.CreateCommand();
+                    cmd_add.CommandText = sql_add;
+                    cmd_add.ExecuteNonQuery();
+                    string sql_upd = "update Product set Quantity=" + updatedquantity + " where ID=" + id;
+                    SqlCommand cmd_upd = cnn.CreateCommand();
+                    cmd_upd.CommandText = sql_upd;
+                    cmd_upd.ExecuteNonQuery();
+
+                    productlist += dt.Rows[i]["Product Name"].ToString() + ": " + dt.Rows[i]["Quantity"] + "\n";
+                }
+
+                MessageBox.Show("Bill is completed!\n\n" +
+                    "Bill Details:\n\n" +
+                    productlist +
+                    "\n\n" +
+                    "Total Price: " + TotalPrice + "\n\n", "Bill Information"
+                    );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
