@@ -189,6 +189,11 @@ namespace ShopManagementV6
             mf.Closed += (s, args) => this.LoadData();
             mf.Show();
         }
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
 
     }
