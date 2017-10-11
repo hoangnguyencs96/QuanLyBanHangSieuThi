@@ -179,6 +179,16 @@ namespace ShopManagementV6
             sda.Fill(dt);
             AccountGridView.DataSource = dt;
         }
+        private void ChangePWBut_Click(object sender, EventArgs e)
+        {
+            int i = AccountGridView.CurrentCell.RowIndex;
+
+            string username = AccountGridView.Rows[i].Cells[0].Value.ToString();
+
+            var mf = new ChangePasswordForm(username);
+            mf.Closed += (s, args) => this.LoadData();
+            mf.Show();
+        }
 
 
     }
