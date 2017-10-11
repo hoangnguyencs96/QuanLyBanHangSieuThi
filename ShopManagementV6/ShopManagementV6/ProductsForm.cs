@@ -70,6 +70,32 @@ namespace ShopManagementV6
                 MessageBox.Show("An error rised when trying to insert: " + ex.Message);
             }
         }
+        private void DeleteBut_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Delete this product's informations from database?", "Are your sure?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cnn;
+
+                int i = ProductsGridView.CurrentCell.RowIndex;
+                string value = ProductsGridView.Rows[i].Cells[0].Value.ToString();
+                cmd.CommandText = "Delete from Product where ID='" + value + "'";
+                int count = cmd.ExecuteNonQuery();
+                LoadData();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error rised when trying to delete: " + x.Message);
+            }
+        }
 
     }
 }
