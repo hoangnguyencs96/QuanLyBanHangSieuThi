@@ -116,6 +116,24 @@ namespace ShopManagementV6
                 MessageBox.Show("Error rised when trying to delete: " + x.Message);
             }
         }
+<<<<<<< HEAD
+=======
+
+        private void EditBut_Click(object sender, EventArgs e)
+        {
+            int i = EmployeesGridView.CurrentCell.RowIndex;
+
+            string ID = EmployeesGridView.Rows[i].Cells[0].Value.ToString();
+            string name = EmployeesGridView.Rows[i].Cells[1].Value.ToString();
+            string dateofbirth = EmployeesGridView.Rows[i].Cells[2].Value.ToString();
+            string salary = EmployeesGridView.Rows[i].Cells[3].Value.ToString();
+            string description = EmployeesGridView.Rows[i].Cells[4].Value.ToString();
+
+            var mf = new EditEmployees(ID, name, dateofbirth, salary, description);
+            mf.Closed += (s, args) => this.LoadData();
+            mf.Show();
+        }
+>>>>>>> 1c1a67a9589fff468fbf594f6496e30a5241ee51
 
 
     }
