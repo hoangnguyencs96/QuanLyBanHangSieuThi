@@ -169,7 +169,17 @@ namespace ShopManagementV6
             sda2.Fill(dt2);
             AccountGridView.DataSource = dt2;
         }
+        private void SearchBut_Click(object sender, EventArgs e)
+        {
+            string sql = "select UserName,Name,SalesPersonID,Descriptions,DateOfBirth from Account where UserName like '%" + SearchBox.Text + "%' or Name like '%" + SearchBox.Text + "%'";
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            DataTable dt = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
+            sda.Fill(dt);
+            AccountGridView.DataSource = dt;
+        }
 
-        
+
     }
 }
