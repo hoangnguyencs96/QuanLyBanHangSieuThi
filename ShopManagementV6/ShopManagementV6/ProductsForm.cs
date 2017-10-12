@@ -114,6 +114,56 @@ namespace ShopManagementV6
             ep.ShowDialog();
         }
 
+        private void Test_Click(object sender, EventArgs e)
+        {
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter("select * from Product", cnn);
+            sda.Fill(dt);
+            ProductsGridView.DataSource = dt;
+            cnn.Close();
+        }
+        private void SearchBut_Click(object sender, EventArgs e)
+        {
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+
+            DataTable dt = new DataTable();
+
+            string searchname = "%" + SearchBox.Text + "%";
+            string searchdes = "%" + SearchBox.Text + "%";
+            string order = (string)SortComboBox.SelectedItem;
+
+            string sql;
+            if (order == "" || order == null || order == "None(Default)")
+            {
+                if (OrderRadioButton.Checked == false)
+                {
+                    sql = @"select * from Product where (ProductName like '" + searchname + "') or (ProductDescription like '" + searchdes + "')";
+                }
+                else
+                {
+                    sql = @"select * from Product where (ProductName like '" + searchname + "') or (ProductDescription like '" + searchdes + "')";
+                }
+            }
+            else
+            {
+                if (OrderRadioButton.Checked == false)
+                {
+                    sql = @"select * from Product where (ProductName like '" + searchname + "') or (ProductDescription like '" + searchdes + "')" + " order by " + order + " desc;";
+                }
+                else
+                {
+                    sql = @"select * from Product where (ProductName like '" + searchname + "') or (ProductDescription like '" + searchdes + "')" + " order by " + order + " asc;";
+                }
+            }
+            SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
+            sda.Fill(dt);
+            ProductsGridView.DataSource = dt;
+            cnn.Close();
+        }
 
     }
 }
