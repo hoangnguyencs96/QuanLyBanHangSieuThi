@@ -66,6 +66,16 @@ namespace ShopManagementV6
             }
         }
 
+        private void Search_Click(object sender, EventArgs e)
+        {
+            string sql = "select ID,Name,DateOfBirth,Salary,Description from SalesPerson where Name like '%" + SearchBox.Text + "%'";
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            DataTable dt = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
+            sda.Fill(dt);
+            EmployeesGridView.DataSource = dt;
+        }
 
 
     }
