@@ -44,7 +44,29 @@ namespace ShopManagementV6
             mf.Closed += (s, args) => this.LoadData();
             mf.Show();
         }
+        private void EmployeesGridView_MouseClick(object sender, MouseEventArgs e)
+        {
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            try
+            {
 
-       
+                int i = EmployeesGridView.CurrentCell.RowIndex;
+                string SaleID = EmployeesGridView.Rows[i].Cells[0].Value.ToString();
+                string sql = "select ID,SoldDate,TotalPrice from Bill where SalesPersonID=" + SaleID;
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
+                sda.Fill(dt);
+
+                BillsGridView.DataSource = dt;
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error rised when trying to delete: " + x.Message);
+            }
+        }
+
+
+
     }
 }
