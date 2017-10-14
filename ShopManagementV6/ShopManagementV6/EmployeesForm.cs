@@ -86,6 +86,36 @@ namespace ShopManagementV6
             sda.Fill(dt);
             EmployeesGridView.DataSource = dt;
         }
+        private void DeleteBut_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Delete this salesperson from database?", "Are your sure?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cnn;
+
+                int i = EmployeesGridView.CurrentCell.RowIndex;
+                string ID = EmployeesGridView.Rows[i].Cells[0].Value.ToString();
+                string sql = "delete SalesPerson where ID=" + ID;
+                cmd.CommandText = sql;
+                int rowCount = cmd.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter("select ID,Name,DateOfBirth,Salary,Description from SalesPerson", cnn);
+                sda.Fill(dt);
+
+                EmployeesGridView.DataSource = dt;
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error rised when trying to delete: " + x.Message);
+            }
+        }
 
 
     }
