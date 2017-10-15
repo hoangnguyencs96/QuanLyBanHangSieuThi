@@ -169,9 +169,10 @@ namespace ShopManagementV6
             sda2.Fill(dt2);
             AccountGridView.DataSource = dt2;
         }
+
         private void SearchBut_Click(object sender, EventArgs e)
         {
-            string sql = "select UserName,Name,SalesPersonID,Descriptions,DateOfBirth from Account where UserName like '%" + SearchBox.Text + "%' or Name like '%" + SearchBox.Text + "%'";
+            string sql = "select UserName,Name,SalesPersonID,Descriptions,DateOfBirth from Account where UserName like '%" + SearchBox.Text+"%' or Name like '%"+SearchBox.Text+"%'";
             SqlConnection cnn = DBUtils.GetDBConnection();
             cnn.Open();
             DataTable dt = new DataTable();
@@ -179,6 +180,7 @@ namespace ShopManagementV6
             sda.Fill(dt);
             AccountGridView.DataSource = dt;
         }
+
         private void ChangePWBut_Click(object sender, EventArgs e)
         {
             int i = AccountGridView.CurrentCell.RowIndex;
@@ -189,10 +191,12 @@ namespace ShopManagementV6
             mf.Closed += (s, args) => this.LoadData();
             mf.Show();
         }
+
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
 
         }
+
         private void button2_Click(object sender, EventArgs e)
         {
             int i = AccountGridView.CurrentCell.RowIndex;
@@ -210,8 +214,7 @@ namespace ShopManagementV6
 
                 cmd.ExecuteNonQuery();
                 LoadData();
-            }
-            catch (Exception ex)
+            }catch(Exception ex)
             {
                 MessageBox.Show("ERROR: " + ex.Message);
             }
@@ -240,9 +243,5 @@ namespace ShopManagementV6
                 MessageBox.Show("ERROR: " + ex.Message);
             }
         }
-
-
-
-
     }
 }

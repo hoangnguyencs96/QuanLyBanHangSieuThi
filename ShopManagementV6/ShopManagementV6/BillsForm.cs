@@ -118,7 +118,6 @@ namespace ShopManagementV6
             {
                 MessageBox.Show("Error rised when trying to delete: " + x.Message);
             }
-
         }
 
         private void SearchBut_Click(object sender, EventArgs e)
@@ -132,12 +131,11 @@ namespace ShopManagementV6
             string searchdes = "%" + SearchBox.Text + "%";
 
             string sql = @"select ProductID,ProductName,Quantity,BillInfo,TotalPrice from ProductsBill where (ProductName like '" + searchname + "')";
-
+               
             SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
             sda.Fill(dt);
             ProductBillGridView.DataSource = dt;
             cnn.Close();
-
         }
 
         private void ProductBillGridView_MouseClick(object sender, MouseEventArgs e)
@@ -162,30 +160,11 @@ namespace ShopManagementV6
             {
                 MessageBox.Show("Error rised when trying to find: " + x.Message);
             }
-
-            if (e.KeyChar == 13)
-            {
-                SqlConnection cnn = DBUtils.GetDBConnection();
-                cnn.Open();
-
-                DataTable dt = new DataTable();
-
-                string searchname = "%" + SearchBox.Text + "%";
-                string searchdes = "%" + SearchBox.Text + "%";
-
-                string sql = @"select ProductID,ProductName,Quantity,BillInfo,TotalPrice from ProductsBill where (ProductName like '" + searchname + "')";
-
-                SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
-                sda.Fill(dt);
-                ProductBillGridView.DataSource = dt;
-                cnn.Close();
-            }
-
         }
 
         private void SearchBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if(e.KeyChar == 13)
             {
                 SqlConnection cnn = DBUtils.GetDBConnection();
                 cnn.Open();
@@ -202,7 +181,6 @@ namespace ShopManagementV6
                 ProductBillGridView.DataSource = dt;
                 cnn.Close();
             }
-
         }
 
         private void AdvanceBut_Click(object sender, EventArgs e)
@@ -217,14 +195,14 @@ namespace ShopManagementV6
 
                 starttime = starttime + " 00:00:00 AM";
                 endtime = endtime + " 11:59:59 PM";
-                string sql = "select ID,BillInfo,CustomerName,SalesPersonID,TotalPrice from Bill where SoldDate>='" + starttime + "' and SoldDate<='" + endtime + "'";
-
+                string sql = "select ID,BillInfo,CustomerName,SalesPersonID,TotalPrice from Bill where SoldDate>='" + starttime+"' and SoldDate<='"+endtime+"'";
+                
                 DataTable dt = new DataTable();
                 SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
                 sda.Fill(dt);
 
                 double sumprice = 0;
-                for (int i = 0; i < dt.Rows.Count; i++)
+                for(int i=0; i < dt.Rows.Count; i++)
                 {
                     sumprice += Double.Parse(dt.Rows[i]["ToTalPrice"].ToString());
                 }
@@ -233,12 +211,10 @@ namespace ShopManagementV6
                 BillGridView.DataSource = dt;
                 cnn.Close();
 
-            }
-            catch (Exception ex)
+            }catch(Exception ex)
             {
                 MessageBox.Show("Error rised: " + ex.Message);
             }
-
         }
     }
 }

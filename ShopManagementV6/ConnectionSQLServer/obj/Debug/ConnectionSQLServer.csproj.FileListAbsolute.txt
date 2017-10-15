@@ -1,0 +1,9 @@
+F:\Web\ShopManagement5thEd\ConnectionSQLServer\bin\Debug\ConnectionSQLServer.dll
+F:\Web\ShopManagement5thEd\ConnectionSQLServer\bin\Debug\ConnectionSQLServer.pdb
+F:\Web\ShopManagement5thEd\ConnectionSQLServer\obj\Debug\ConnectionSQLServer.dll
+F:\Web\ShopManagement5thEd\ConnectionSQLServer\obj\Debug\ConnectionSQLServer.pdb
+C:\Users\diagr\Desktop\ShopManagementV6\ConnectionSQLServer\bin\Debug\ConnectionSQLServer.dll
+C:\Users\diagr\Desktop\ShopManagementV6\ConnectionSQLServer\bin\Debug\ConnectionSQLServer.pdb
+C:\Users\diagr\Desktop\ShopManagementV6\ConnectionSQLServer\obj\Debug\ConnectionSQLServer.csprojResolveAssemblyReference.cache
+C:\Users\diagr\Desktop\ShopManagementV6\ConnectionSQLServer\obj\Debug\ConnectionSQLServer.dll
+C:\Users\diagr\Desktop\ShopManagementV6\ConnectionSQLServer\obj\Debug\ConnectionSQLServer.pdb

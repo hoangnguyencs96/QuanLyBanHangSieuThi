@@ -125,8 +125,7 @@ namespace ShopManagementV6
 
                     dt.Rows.Add(row);
                     CartGridView.DataSource = dt;
-                }
-                catch (Exception ex)
+                }catch(Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
                 }
@@ -144,7 +143,7 @@ namespace ShopManagementV6
                     sda.Fill(dt2);
 
                     int pos = -1;
-                    for (int i = 0; i < dt.Rows.Count; i++)
+                    for(int i=0; i < dt.Rows.Count; i++)
                     {
                         int c = Int32.Parse(dt.Rows[i]["ID"].ToString());
                         if (Int32.Parse(IDTextBox.Text) == c)
@@ -180,7 +179,6 @@ namespace ShopManagementV6
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
-
         }
 
         private void DeleteBut_Click(object sender, EventArgs e)
@@ -204,7 +202,6 @@ namespace ShopManagementV6
             {
                 MessageBox.Show("Error rised when trying to delete: " + x.Message);
             }
-
         }
 
         private void CountBut_Click(object sender, EventArgs e)
@@ -219,14 +216,13 @@ namespace ShopManagementV6
             {
                 int rowCount = dt.Rows.Count;
                 double TotalPrice = 0;
-                for (int i = 0; i < rowCount; i++)
+                for(int i=0; i< rowCount; i++)
                 {
                     TotalPrice += (double)dt.Rows[i]["Total Price"];
                 }
 
                 CountBox.Text = TotalPrice.ToString();
             }
-
         }
 
         private void CompleteBut_Click(object sender, EventArgs e)
@@ -234,7 +230,7 @@ namespace ShopManagementV6
             DataTable dt = (DataTable)CartGridView.DataSource;
             if (dt == null)
             {
-                MessageBox.Show("Nothing on cart!", "Check out error!");
+                MessageBox.Show("Nothing on cart!","Check out error!");
                 return;
             }
             string BillInfo = DateTime.Now.ToString();
@@ -246,14 +242,14 @@ namespace ShopManagementV6
             cnn.Open();
             try
             {
-                string sql = "insert into Bill(BillInfo,TotalPrice,CustomerName,SalesPersonID) values('" + BillInfo + "'," + TotalPrice + ",'" + CustomerName + "'," + SalesPersonID + ")";
+                string sql = "insert into Bill(BillInfo,TotalPrice,CustomerName,SalesPersonID) values('"+BillInfo+"',"+TotalPrice+",'"+CustomerName+"',"+SalesPersonID+")";
                 SqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
 
                 string productlist = "";
 
-                for (int i = 0; i < dt.Rows.Count; i++)
+                for(int i=0; i < dt.Rows.Count; i++)
                 {
                     int left = Int32.Parse(dt.Rows[i]["Left in Storage"].ToString());
                     string id = dt.Rows[i]["ID"].ToString();
@@ -263,7 +259,7 @@ namespace ShopManagementV6
                     left = left - iquantity;
                     string updatedquantity = left.ToString();
                     string totalprice = dt.Rows[i]["Total Price"].ToString();
-                    string sql_add = "insert into ProductsBill(ProductID,ProductName,Quantity,BillInfo,TotalPrice) values(" + id + ",'" + productname + "'," + quantity + ",'" + BillInfo + "'," + totalprice + ")";
+                    string sql_add = "insert into ProductsBill(ProductID,ProductName,Quantity,BillInfo,TotalPrice) values(" + id + ",'" + productname + "'," + quantity + ",'" + BillInfo + "',"+totalprice+")";
                     SqlCommand cmd_add = cnn.CreateCommand();
                     cmd_add.CommandText = sql_add;
                     cmd_add.ExecuteNonQuery();
@@ -275,18 +271,16 @@ namespace ShopManagementV6
                     productlist += dt.Rows[i]["Product Name"].ToString() + ": " + dt.Rows[i]["Quantity"] + "\n";
                 }
 
-                MessageBox.Show("Bill is completed!\n\n" +
-                    "Bill Details:\n\n" +
-                    productlist +
-                    "\n\n" +
-                    "Total Price: " + TotalPrice + "\n\n", "Bill Information"
+                MessageBox.Show("Bill is completed!\n\n"+
+                    "Bill Details:\n\n"+
+                    productlist+
+                    "\n\n"+
+                    "Total Price: "+ TotalPrice +"\n\n","Bill Information"
                     );
-            }
-            catch (Exception ex)
+            }catch(Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)

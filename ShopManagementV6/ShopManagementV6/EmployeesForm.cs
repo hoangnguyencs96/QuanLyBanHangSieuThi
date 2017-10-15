@@ -44,6 +44,7 @@ namespace ShopManagementV6
             mf.Closed += (s, args) => this.LoadData();
             mf.Show();
         }
+
         private void EmployeesGridView_MouseClick(object sender, MouseEventArgs e)
         {
             SqlConnection cnn = DBUtils.GetDBConnection();
@@ -76,6 +77,7 @@ namespace ShopManagementV6
             sda.Fill(dt);
             EmployeesGridView.DataSource = dt;
         }
+
         private void ShowBut_Click(object sender, EventArgs e)
         {
             string sql = "select ID,Name,DateOfBirth,Salary,Description from SalesPerson";
@@ -86,6 +88,7 @@ namespace ShopManagementV6
             sda.Fill(dt);
             EmployeesGridView.DataSource = dt;
         }
+
         private void DeleteBut_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Delete this salesperson from database?", "Are your sure?", MessageBoxButtons.YesNo);
@@ -116,8 +119,6 @@ namespace ShopManagementV6
                 MessageBox.Show("Error rised when trying to delete: " + x.Message);
             }
         }
-<<<<<<< HEAD
-=======
 
         private void EditBut_Click(object sender, EventArgs e)
         {
@@ -133,8 +134,5 @@ namespace ShopManagementV6
             mf.Closed += (s, args) => this.LoadData();
             mf.Show();
         }
->>>>>>> 1c1a67a9589fff468fbf594f6496e30a5241ee51
-
-
     }
 }

@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagementV6", "ShopManagementV6\ShopManagementV6.csproj", "{2891A693-3D71-4C4F-812D-E74FC1D94E43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectionSQLServer", "..\ShopManagement5thEd\ConnectionSQLServer\ConnectionSQLServer.csproj", "{D42A80DC-B6C2-4823-A966-7D5B9602B4EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectionSQLServer", "ConnectionSQLServer\ConnectionSQLServer.csproj", "{D42A80DC-B6C2-4823-A966-7D5B9602B4EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

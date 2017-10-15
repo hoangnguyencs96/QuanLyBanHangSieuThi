@@ -205,13 +205,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ShopManagement5thEd\ConnectionSQLServer\ConnectionSQLServer.csproj">
+    <None Include="Resources\5b5b68ddf9de812ffc941238e66049ac.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConnectionSQLServer\ConnectionSQLServer.csproj">
       <Project>{d42a80dc-b6c2-4823-a966-7d5b9602b4ee}</Project>
       <Name>ConnectionSQLServer</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\5b5b68ddf9de812ffc941238e66049ac.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

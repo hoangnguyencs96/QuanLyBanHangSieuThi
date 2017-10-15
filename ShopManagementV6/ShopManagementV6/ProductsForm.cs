@@ -70,6 +70,7 @@ namespace ShopManagementV6
                 MessageBox.Show("An error rised when trying to insert: " + ex.Message);
             }
         }
+
         private void DeleteBut_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Delete this product's informations from database?", "Are your sure?", MessageBoxButtons.YesNo);
@@ -96,6 +97,7 @@ namespace ShopManagementV6
                 MessageBox.Show("Error rised when trying to delete: " + x.Message);
             }
         }
+
         private void EditBut_Click(object sender, EventArgs e)
         {
             SqlConnection cnn = DBUtils.GetDBConnection();
@@ -125,6 +127,7 @@ namespace ShopManagementV6
             ProductsGridView.DataSource = dt;
             cnn.Close();
         }
+
         private void SearchBut_Click(object sender, EventArgs e)
         {
             SqlConnection cnn = DBUtils.GetDBConnection();
@@ -164,6 +167,5 @@ namespace ShopManagementV6
             ProductsGridView.DataSource = dt;
             cnn.Close();
         }
-
     }
 }
