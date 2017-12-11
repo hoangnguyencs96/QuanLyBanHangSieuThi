@@ -291,7 +291,9 @@ namespace ShopManagementV6
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            IDTextBox.Text = "";
+            QuantityBox.Text = "";
+            CartGridView.DataSource = null;
         }
     }
 }
