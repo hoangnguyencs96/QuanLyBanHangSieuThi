@@ -98,7 +98,27 @@ namespace ShopManagementV6
 
         private void BillGridView_MouseClick(object sender, MouseEventArgs e)
         {
-            
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cnn;
+
+                int i = BillGridView.CurrentCell.RowIndex;
+                string BillInfo = BillGridView.Rows[i].Cells[1].Value.ToString();
+                string sql = "select ProductID,ProductName,Quantity,BillInfo,TotalPrice from ProductsBill where BillInfo='" + BillInfo + "'";
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
+                sda.Fill(dt);
+
+                ProductBillGridView.DataSource = dt;
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error rised when trying to delete: " + x.Message);
+            }
+
         }
 
         private void SearchBut_Click(object sender, EventArgs e)
