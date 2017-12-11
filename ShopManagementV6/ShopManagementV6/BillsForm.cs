@@ -190,7 +190,38 @@ if (e.KeyChar == 13)
 
         private void AdvanceBut_Click(object sender, EventArgs e)
         {
-            
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+
+            try
+            {
+                string starttime = StartTimePicker.Value.ToString("MM/dd/yyyy");
+                string endtime = EndTimePicker.Value.ToString("MM/dd/yyyy");
+
+                starttime = starttime + " 00:00:00 AM";
+                endtime = endtime + " 11:59:59 PM";
+                string sql = "select ID,BillInfo,CustomerName,SalesPersonID,TotalPrice from Bill where SoldDate>='" + starttime + "' and SoldDate<='" + endtime + "'";
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
+                sda.Fill(dt);
+
+                double sumprice = 0;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    sumprice += Double.Parse(dt.Rows[i]["ToTalPrice"].ToString());
+                }
+
+                AdvanceBox.Text = sumprice.ToString();
+                BillGridView.DataSource = dt;
+                cnn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error rised: " + ex.Message);
+            }
+
         }
     }
 }
