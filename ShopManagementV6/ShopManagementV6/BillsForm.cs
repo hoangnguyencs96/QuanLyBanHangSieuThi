@@ -142,7 +142,45 @@ namespace ShopManagementV6
 
         private void ProductBillGridView_MouseClick(object sender, MouseEventArgs e)
         {
-            
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cnn;
+
+                int i = ProductBillGridView.CurrentCell.RowIndex;
+                string BillInfo = ProductBillGridView.Rows[i].Cells[3].Value.ToString();
+                string sql = "select ID,BillInfo,CustomerName,SalesPersonID,TotalPrice from Bill where BillInfo='" + BillInfo + "'";
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
+                sda.Fill(dt);
+
+                BillGridView.DataSource = dt;
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("Error rised when trying to find: " + x.Message);
+            }
+            -----------------------------------------------------------
+if (e.KeyChar == 13)
+            {
+                SqlConnection cnn = DBUtils.GetDBConnection();
+                cnn.Open();
+
+                DataTable dt = new DataTable();
+
+                string searchname = "%" + SearchBox.Text + "%";
+                string searchdes = "%" + SearchBox.Text + "%";
+
+                string sql = @"select ProductID,ProductName,Quantity,BillInfo,TotalPrice from ProductsBill where (ProductName like '" + searchname + "')";
+
+                SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
+                sda.Fill(dt);
+                ProductBillGridView.DataSource = dt;
+                cnn.Close();
+            }
+
         }
 
         private void SearchBox_KeyPress(object sender, KeyPressEventArgs e)
