@@ -117,6 +117,21 @@ namespace ShopManagementV6
             }
         }
 
+        private void EditBut_Click(object sender, EventArgs e)
+        {
+            int i = EmployeesGridView.CurrentCell.RowIndex;
+
+            string ID = EmployeesGridView.Rows[i].Cells[0].Value.ToString();
+            string name = EmployeesGridView.Rows[i].Cells[1].Value.ToString();
+            string dateofbirth = EmployeesGridView.Rows[i].Cells[2].Value.ToString();
+            string salary = EmployeesGridView.Rows[i].Cells[3].Value.ToString();
+            string description = EmployeesGridView.Rows[i].Cells[4].Value.ToString();
+
+            var mf = new EditEmployees(ID, name, dateofbirth, salary, description);
+            mf.Closed += (s, args) => this.LoadData();
+            mf.Show();
+        }
+
 
     }
 }
