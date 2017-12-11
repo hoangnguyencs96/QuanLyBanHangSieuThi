@@ -76,6 +76,16 @@ namespace ShopManagementV6
             sda.Fill(dt);
             EmployeesGridView.DataSource = dt;
         }
+        private void ShowBut_Click(object sender, EventArgs e)
+        {
+            string sql = "select ID,Name,DateOfBirth,Salary,Description from SalesPerson";
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+            DataTable dt = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter(sql, cnn);
+            sda.Fill(dt);
+            EmployeesGridView.DataSource = dt;
+        }
 
 
     }

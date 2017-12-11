@@ -193,6 +193,29 @@ namespace ShopManagementV6
         {
 
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int i = AccountGridView.CurrentCell.RowIndex;
+
+            string username = AccountGridView.Rows[i].Cells[0].Value.ToString();
+
+            SqlConnection cnn = DBUtils.GetDBConnection();
+            cnn.Open();
+
+            try
+            {
+                string sql = "Update Account set IsAdmin=1 where UserName='" + username + "'";
+                SqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = sql;
+
+                cmd.ExecuteNonQuery();
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
+        }
 
 
 
