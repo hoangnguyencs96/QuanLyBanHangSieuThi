@@ -162,8 +162,8 @@ namespace ShopManagementV6
             {
                 MessageBox.Show("Error rised when trying to find: " + x.Message);
             }
-            -----------------------------------------------------------
-if (e.KeyChar == 13)
+
+            if (e.KeyChar == 13)
             {
                 SqlConnection cnn = DBUtils.GetDBConnection();
                 cnn.Open();
